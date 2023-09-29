@@ -49,3 +49,7 @@ public class tUf {
                            + " " + ans[1]);
     }
 }
+
+//output :-
+floor = 4
+ceil = 7
