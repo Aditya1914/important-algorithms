@@ -1,2 +1,2 @@
-# leetcode-algorithms
-important questions for interviews
+important questions
+#must revise before interview
