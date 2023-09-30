@@ -1,2 +1,2 @@
-important questions
-#must revise before interview
+#important questions(leetcode)
+revise before interview
