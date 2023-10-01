@@ -1,1 +1,26 @@
-
+class Solution
+{  //function to stop overflow of integers
+    public int midfunc(int n , int m , int mid){
+        long ans =1;
+        for(int i = 1;  i <= n; i++){
+            ans *= mid;
+            if( ans > m)return 1;
+        }
+        if( ans == m)return 0;
+        return 2;
+    }
+    public int NthRoot(int n, int m)
+    {
+     int low  = 1;
+     int high = m;
+     
+     while( low <= high){
+     int mid = low + (high- low)/2;
+     int ans  = midfunc(n, m, mid);
+     if( ans ==  0)return mid;
+     else if( ans == 1)high = mid-1;
+     else low = mid+1;
+     }
+     return -1;
+    }
+}
