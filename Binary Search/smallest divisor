@@ -1,1 +1,32 @@
-
+class Solution {
+    
+    public static int smallestDivisor(int[] nums, int k) {
+       
+        int max = Integer.MIN_VALUE;
+       
+        for(int i = 0; i < nums.length; i++){
+            max = Math.max(max,nums[i]);
+           
+        }
+        int low = 0;
+        int high= max;
+        
+        while(low <= high){
+            int mid = low + (high - low)/2;
+             int ans = divisor(mid,k,nums);
+            if( ans <= k ){
+               
+                high = mid-1;
+            }
+            else low = mid +1;
+        }
+        return low;
+    }
+    public static int divisor(int mid , int k, int nums[]){
+        int ans =0 ;
+        for(int i = 0; i < nums.length; i++){
+            ans += Math.ceil((double)nums[i]/(double)mid);
+        }
+        return ans;
+    }
+}
