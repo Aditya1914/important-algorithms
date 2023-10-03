@@ -1,1 +1,43 @@
+class Solution {
+    public int shipWithinDays(int[] w, int reqdays) {
+      int max = Integer.MIN_VALUE;
+      int sum = 0;
+      for(int num : w){
+          max = Math.max(max,num);
+          sum += num;
+    }
+    int low = max;
+    int high = sum;
+   
+
+    while( low <= high){
+        int mid = low + (high-low)/2;
+        int days = capacity(w,mid);
+        if(days <= reqdays ){
+           
+            high = mid -1;
+        }
+        else low = mid +1;
+    }
+    return low;
+    }
+    public int capacity( int w[],int mid){
+        int load  =0;
+        int days = 1;
+        for(int i = 0; i < w.length;i++ ){
+            if(load + w[i] > mid ){
+                load  = w[i];
+                days++;
+            }
+            else{
+                load += w[i];
+                
+            }
+        }
+        return days;
+    }
+    
+}
+
+
 
