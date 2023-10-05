@@ -1,1 +1,50 @@
-
+class Solution {
+    public static int solve(int n, int k, int[] stalls) {
+        //Brute force linear search O((max -min) * stalls.length)
+       /* Arrays.sort(stalls);
+        if( k == 2){
+            return stalls[n-1] - stalls[0];
+        }
+        int maxofmins = 0;
+        for(int i = 1; i < stalls[n-1] - stalls[0]; i++ ){
+            if(cowsplaced(stalls,k, i)){
+                maxofmins = i;
+            }
+        }
+        return maxofmins;
+        */
+        
+        //Binary search 0(log (max- min) * stalls.length) 
+        
+        Arrays.sort(stalls);
+         
+         if( k == 2){
+            return stalls[n-1] - stalls[0];
+        }
+        
+        int low = 1;
+        int high = stalls[n-1]-stalls[0];
+        
+        while(low <= high){
+            int mid = low + (high - low )/2;
+            if( cowsplaced(stalls,k,mid)){
+                low = mid +1;
+            }
+            else high = mid -1;
+        }
+        return high;
+        
+    }
+    public static boolean cowsplaced(int []stalls,int cows,int dist){
+        int count = 1;
+        int lastplaced = stalls[0];
+        for(int i = 0; i < stalls.length; i++ ){
+            if(stalls[i]- lastplaced >= dist){
+                count++;
+                lastplaced = stalls[i];
+            }
+            if( count == cows)return true;
+        }
+        return false;
+    }
+}
