@@ -3,7 +3,7 @@ class Solution
     //Function to find minimum number of pages.
     public static int findPages(int[]a,int n,int m)
     {
-        // brute force linear search
+        // brute force linear search  tc - O((sum - max) * a.length)
        /*
          if(n < m )return -1;
         int max = Integer.MIN_VALUE;
@@ -22,7 +22,7 @@ class Solution
         return -1;
         */
         
-        // binary search 
+        // binary search  tc - O(log(sum- max) * a.length)
         
          if(n < m )return -1;
         int low = Integer.MIN_VALUE;
