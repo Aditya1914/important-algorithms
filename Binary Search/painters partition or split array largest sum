@@ -1,0 +1,35 @@
+ class Solution{
+    static long minTime(int[] arr,int n,int k){
+        
+        long low = Integer.MIN_VALUE;
+        long high = 0;
+        for(int x : arr){
+            high += x;
+            low = Math.max(low,x);
+        }
+        while( low <= high){
+            long mid = low +(high - low)/2;
+            if(boardspainted(mid,arr) > k)low = mid +1;
+            else high = mid -1;
+            
+        }
+        return low;
+}
+    static int boardspainted(long mid,int []arr){
+        int count = 1;
+        long boardsum= 0;
+        for(int x : arr){
+            if( boardsum + x <= mid){
+                boardsum += x;
+                
+            }
+            else{
+                count++;
+                boardsum = x;
+            }
+        }
+        return count;
+    }
+}
+
+
