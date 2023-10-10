@@ -1,3 +1,3 @@
-#important questions(leetcode), 
+#important questions, 
 
 revise before interview
