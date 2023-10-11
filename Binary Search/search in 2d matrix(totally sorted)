@@ -33,7 +33,7 @@ class Solution
 } 
 
 
-//optimal solution , tc - O(log(m+n)) , sc - O(1)
+//optimal solution , tc - O(log(m*n)) , sc - O(1)
 class Solution {
     public boolean searchMatrix(int[][] mat, int x) {
    
