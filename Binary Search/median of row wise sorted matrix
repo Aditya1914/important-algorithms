@@ -1,1 +1,42 @@
+//linear search  -  (1) iteratate and form a 1d array from 2d and sort it and find (R*C)/2 . time complexity = O(R * C + (R*C)Log(R*C) and uses linear space 
 
+
+//Binary search -  time complexity - O(R + Log(high * R * Log(C)) and uses constant space
+class Solution {
+    int median(int mat[][], int R, int C) {
+
+        int low = Integer.MAX_VALUE , high = Integer.MIN_VALUE;
+        for(int i = 0; i < R; i++){
+            low = Math.min(low,mat[i][0]);
+            high = Math.max(high,mat[i][C-1]);
+        }
+        int reqcount = (R * C)/2;
+        while( low <= high){
+             int mid = low +(high - low)/2;
+             int countofsmallele = countsmaller(mid,mat);
+             if( countofsmallele <= reqcount)low = mid +1;
+             else high = mid -1;
+        }
+        return low;
+    }
+    //counting smaller than or equal to elements
+    int countsmaller(int mid,int mat[][]){
+        int count = 0;
+        for(int i = 0; i < mat.length; i++){
+            count += upperbound(mid,mat[i]);
+        }
+        return count;
+    }
+    
+    int upperbound(int target,int arr[]){
+        int low = 0;
+        int high = arr.length-1;
+        
+        while(low <= high){
+            int mid = low +(high - low)/2;
+            if( arr[mid] > target)high = mid -1;
+            else low = mid+1;
+        }
+        return low;
+    }
+}
