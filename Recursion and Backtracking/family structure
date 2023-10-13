@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Solution {
+	public static String kthChildNthGeneration(int n, long k) {
+		// Write your code here
+        if( n== 1 || k ==1)return "Male";
+		
+		String parent = kthChildNthGeneration(n-1, (k+1)/2 );
+
+		//if k is odd then the child will be same as parent and if k is even child will be different
+        
+		if( k % 2 != 0)return parent;
+		else {
+			if( parent == "Male")return "Female";
+			else return "Male";
+		}
+		
+	}
+	
+
+}
