@@ -1,1 +1,18 @@
+class Hanoi {
+    public long count = 0;
+    public long toh(int N, int A, int C, int B) {
+       if(N == 1){
+            System.out.println( "move disk "+N+" from rod "+A+" to rod "+C); 
+            count++;
+            return count;
+       }
+       toh( N-1 , A,B,C );
+        System.out.println( "move disk "+N+" from rod "+A+" to rod "+C); 
+        count++;
+        toh( N-1 ,B,C,A );
+           
+       
+     return count;
+    }
+}
 
