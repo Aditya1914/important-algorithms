@@ -1,0 +1,27 @@
+class Solution {
+  public static boolean checkSubsequenceSum(int N, int[] arr, int sum) {
+     return check(arr, sum , 0 , N, 0);
+    }
+    static Boolean check(int []arr, int sum ,int s,int len,int idx ){
+        if( s > sum)return false;
+        if(idx == len){
+            if( s == sum ){
+                return true;
+            }
+            return false;
+        }
+        
+        s += arr[idx];
+        if(check(arr, sum ,s, len,idx +1) == true)return true; //take 
+       s -= arr[idx];
+        if(check(arr,sum , s, len, idx+1) == true)return true; // not take
+        
+        return false;
+
+  }
+}
+     
+
+TC - O(2 ^ n)
+SC - O(2 ^ n)
+     
