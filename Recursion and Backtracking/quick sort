@@ -1,0 +1,41 @@
+
+class Solution
+{
+    //Function to sort an array using quick sort algorithm.
+    static void quickSort(int arr[], int low, int high)
+    {
+       if( low < high){
+           int part = partition(arr,low ,high);
+           quickSort(arr,low ,part-1);
+           quickSort(arr, part +1, high);
+       }
+    }
+    static int partition(int arr[], int low, int high)
+    {
+        int pivot = arr[low]; 
+        int i = low ;
+        int j = high;
+        while( i < j){
+        
+        while(arr[i] <= pivot && i++ < high);
+        while(arr[j] > pivot && j-- > low);
+        
+        if(i < j){
+            swap(arr,  i, j);
+        }
+        }
+        swap(arr, low , j);
+        
+        return j;
+    }
+    
+    static void swap(int []arr, int a ,int  b){
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+}
+
+
+TC - O(N * LogN) but merge sort is slightly better if deeply calculated 
+SC - O(1) + recursive stack space
