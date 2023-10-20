@@ -42,4 +42,4 @@ class Solution
 }
 
 TC - O(N * LogN)(worst) , theta(N * LogN)(average) , omega(N * LogN)(best) 
-SC - O(N)
+SC - O(1) + recursive stack space
