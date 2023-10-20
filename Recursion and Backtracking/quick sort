@@ -37,5 +37,5 @@ class Solution
 }
 
 
-TC - O(N * LogN) but merge sort is slightly better if deeply calculated 
+TC - O(N * LogN) but merge sort is slightly better if deeply calculated coz in extremely worst case it will be O(N *N)
 SC - O(1) + recursive stack space
