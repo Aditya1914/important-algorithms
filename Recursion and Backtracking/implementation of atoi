@@ -1,0 +1,46 @@
+class Solution
+{
+    int ans = 0;
+    boolean flag = false;
+    
+    
+    
+    int atoi(String str) {
+
+    int k = 1;
+    int idx = str.length()-1;
+    int num = 0;
+    helper(k , str,idx);
+    if(flag)return -1;
+    return ans;
+    }
+    
+    void helper(int k , String str, int idx ){
+
+        if( idx < 0){
+            return ;
+        }
+        char cur = str.charAt(idx);
+        
+        if( (cur - '0') < 0 || (cur - '0') > 9 || flag){
+            if( cur == '-' && idx == 0){
+                ans *= -1;
+            }
+            else{
+                
+                flag = true;
+                
+            }
+            
+            return;
+            
+        }
+        
+        ans += (cur - '0')*k;
+        
+        helper(k*10 , str,  idx -1 );
+    }
+}
+
+TC - O(N)
+Sc - O(1) + recursive stack space
