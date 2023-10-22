@@ -1,0 +1,19 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    public static boolean canNinjaWin(String s) {
+        if(s.length() <= 1)return false;
+
+        for(int i  =0 ; i < s.length()-1; i++){
+            if(s.charAt(i) == '$' && s.charAt(i+1) == '$'){
+                String nextstate = s.substring(0, i) + "**" + s.substring(i+2);
+                if(!canNinjaWin(nextstate)){ // checks if string nextstate can be having two consecutive '$' or not ,if not it will be true hence ninja wins 
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+  TC - O(N ^ 2)
+  SC - O(1) + recursive stack space
