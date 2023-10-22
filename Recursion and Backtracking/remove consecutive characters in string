@@ -1,0 +1,23 @@
+
+public class Solution {
+	public static String removeConsecutiveDuplicates(String s) {
+    int n = s.length();
+     if( n== 0 || n == 1){
+		 return s;
+
+	 }
+    
+	 if( s.charAt(0) == s.charAt(1)){
+		 return removeConsecutiveDuplicates(s.substring(1));
+	 }
+	 else{
+		 return s.charAt(0) + removeConsecutiveDuplicates(s.substring(1));  
+		//  no need to return separately because this statement return directly after all dups are fixed
+		
+	 }
+	 
+
+}
+}
+TC- O(N)
+SC - O(1) + recursive stack space 
