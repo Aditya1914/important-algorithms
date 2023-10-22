@@ -1,0 +1,25 @@
+class Solution {
+    public static ArrayList<String> subsequences(String s) {
+       ArrayList<String> ans = new ArrayList<>();
+       String ch = "";
+       subsequences( s,ch,ans,0);
+       Collections.sort(ans);
+       ans.remove("");
+       return ans;
+    }
+    public static void subsequences(String s , String ch, ArrayList<String> ans,int idx){
+        if( idx >= s.length()){
+            
+            ans.add(ch);
+            return ;
+        }
+        
+        subsequences(s,ch,ans,idx+1); // exclude
+        ch = ch + s.charAt(idx);
+        subsequences(s,ch,ans,idx +1); // include
+    }
+}
+
+
+TC - O( 2 ^ N + N * Log(N));
+SC - O(N) + recursive stack space
