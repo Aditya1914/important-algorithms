@@ -1,0 +1,32 @@
+class Solution {
+  public static List<String> generateBinaryStrings(int n) {
+    
+    List<String> ans = new ArrayList<>();
+    String s = "";
+    generateAll(n,s,ans);
+    return ans;
+  }
+  
+  public static void generateAll(int n, String s , List<String> ans){
+      if(s.length() >= 2){
+          if( s.charAt(s.length()-1) == '1' && s.charAt(s.length()-2) == '1'){
+               return;
+            //  dont add strings consisting consecutive ones
+          }
+      }
+      
+      if( s.length() == n){
+          ans.add(s);
+          return; 
+      }
+      
+      
+      
+      
+      generateAll(n , s + '0',ans);
+      generateAll(n , s + '1',ans);
+  }
+}
+
+TC - O( 2 ^ N)
+SC- O(1) + recursive stack space
