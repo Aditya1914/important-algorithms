@@ -16,4 +16,4 @@ class Solution
 }
 
 TC - O(N/2);
-SC - O(N/2);
+SC - O(N/2) + recursive stack space;
