@@ -1,0 +1,32 @@
+class GfG{
+	public Stack<Integer> sort(Stack<Integer> st)
+	{
+		popAll(st);
+		return st;
+	}
+	
+	public void popAll(Stack<Integer> st){
+	    if( st.size() == 0){
+	        return;
+	    }
+	    int lastele = st.peek();
+	    st.pop();
+	    popAll(st);
+	    sort_stack(st,lastele);
+	}
+	
+	public void sort_stack(Stack<Integer> st,int x){
+	    if( st.size() == 0 || x > st.peek()){
+	        st.push(x);
+	    }
+	    else{
+	        int lastplaced = st.peek();
+	        st.pop();
+	        sort_stack(st,x);
+	        st.push(lastplaced);
+	    }
+	}
+}
+
+TC - O(N * N);
+SC - O(N) + recursive stack space
