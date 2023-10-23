@@ -1,0 +1,28 @@
+class Solution
+{ 
+    static void reverse(Stack<Integer> st)
+    {
+        if( st.size() == 0){
+            return;
+        }
+        int lastele = st.peek();
+        st.pop();
+        reverse(st);
+        insert_at_bottom(st, lastele);
+    }
+    static void insert_at_bottom(Stack<Integer> st,int x){
+        if( st.size() == 0){
+            st.push(x);
+        }
+        else{
+        int lastplaced = st.peek();
+        st.pop();
+        insert_at_bottom(st,x);
+        st.push(lastplaced);
+    }
+        
+    }
+}
+
+TC - O(N ^ N)
+SC - O(N) + recursive stack space
