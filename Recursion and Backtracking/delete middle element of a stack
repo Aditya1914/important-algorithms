@@ -1,0 +1,19 @@
+class Solution
+{
+    //Function to delete middle element of a stack.
+    public void deleteMid(Stack<Integer>st,int sizeOfStack){
+        
+        if( st.size() == (sizeOfStack+1)/2){
+            st.pop();
+            return ;
+        }
+        
+        int lastele = st.peek();
+        st.pop();
+        deleteMid(st, sizeOfStack);
+        st.push(lastele);
+    } 
+}
+
+TC - O(N/2);
+SC - O(N/2);
