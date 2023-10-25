@@ -1,0 +1,34 @@
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        
+        List<List<Integer>> ans = new ArrayList<>(); 
+        helper(candidates,new ArrayList<>(), target, ans, 0);
+        return ans;
+    }
+    public void  helper(int arr[] ,List<Integer> temp , int target , List<List<Integer>> ans, int idx ){
+         if( idx == arr.length){
+             if( target == 0){
+                 ans.add(new ArrayList<>(temp));
+                
+             }
+             
+              return;
+         }
+         if(target == 0){
+             ans.add(new ArrayList<>(temp));
+             return;
+         }
+         if( target < 0){
+             return;
+         }
+         
+         temp.add(arr[idx]);
+         helper(arr,temp,target - arr[idx], ans, idx);
+         temp.remove(temp.size()-1);
+         helper(arr,temp, target, ans,idx+1);
+         
+    }
+}
+
+TC - O(N^2)
+SC - O(N) + recusive stack space
