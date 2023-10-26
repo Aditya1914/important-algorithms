@@ -1,0 +1,40 @@
+class Solution
+{
+    
+    static ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> al, int target)
+    {
+       
+       ArrayList<ArrayList<Integer>> ans = new ArrayList<>(); 
+       Set<Integer> set = new HashSet<>(al);
+       al = new ArrayList<>(set);
+       Collections.sort(al);
+        helper(al,new ArrayList<>(), target, ans, 0);
+        return ans;
+    }
+    public static void  helper(ArrayList<Integer> al ,List<Integer> temp , int target , ArrayList<ArrayList<Integer>> ans, int idx ){
+         if( idx == al.size()){
+             if( target == 0){
+                 ans.add(new ArrayList<>(temp));
+             }
+             
+              return;
+         }
+      
+         if(target == 0){
+             ans.add(new ArrayList<>(temp));
+             return;
+         }
+         if( target < 0){
+             return;
+         }
+         
+         temp.add(al.get(idx));
+         helper(al,temp,target - al.get(idx), ans, idx); // including and trying with repeated elements 
+         temp.remove(temp.size()-1);
+         helper(al,temp, target, ans,idx+1); //not including just incrementing
+        
+    }
+}
+
+TC - O((2^N * target/ temp.get(idx)  + (N * LogN)) 
+SC - O(N)
