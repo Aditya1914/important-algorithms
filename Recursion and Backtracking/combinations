@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<vector<int>> combine(int n, int k) {
+        vector<int> temp ;
+        vector<vector<int>> ans;
+        combinehelper(temp, ans ,1, n , k);
+        return ans;
+    }
+    void combinehelper(vector<int> &temp , vector<vector<int>> & ans, int idx , int n, int k){
+       if( k == 0){
+           ans.push_back(temp);
+           return;
+       }
+       
+
+       if( idx > n){
+           return;
+       }
+
+
+       temp.push_back(idx);
+       combinehelper(temp , ans , idx + 1 , n , k -1);
+       temp.pop_back();
+       combinehelper(temp , ans , idx + 1, n , k );
+    }
+};
+
+TC - O(2 ^ N)
+SC - O(N)
