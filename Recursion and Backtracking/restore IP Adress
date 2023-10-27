@@ -1,0 +1,37 @@
+class Solution {
+    public List<String> restoreIpAddresses(String s) {
+        String curIP = "";
+        List<String> ans = new ArrayList<>();
+        helper(0 , ans , curIP , s , 0);
+        return ans;
+    }
+
+    void helper(int idx , List<String> ans , String curIP, String s , int partition){
+        if( idx == s.length() || partition == 4){
+        if( idx == s.length() && partition == 4){
+            ans.add(curIP.substring(0 , curIP.length()-1));
+        }
+        return;
+        }
+
+        helper(idx +1 , ans , curIP + s.charAt(idx) + "." , s , partition +1);
+        
+        if( idx + 2 <= s.length() && check(s.substring(idx , idx +2))){
+            helper( idx +2 , ans , curIP + s.substring(idx , idx+2) + "." , s ,partition +1 );
+        }
+         if( idx + 3 <= s.length() && check(s.substring(idx , idx +3))){
+            helper( idx +3 , ans , curIP + s.substring(idx , idx+3) + "." , s ,partition +1 );
+        }
+    }
+
+    boolean check(String str){
+        if( str.charAt(0) == '0' ){
+            return false;
+        }
+        
+        return Integer.parseInt(str) < 256;
+    }
+    }
+
+TC - O(3^ N)
+SC - O(N)
