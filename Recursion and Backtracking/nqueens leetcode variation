@@ -1,0 +1,62 @@
+class Solution {
+    vector<vector<string>> ans;
+public:
+      
+    vector<vector<string>> solveNQueens(int n) {
+      vector<string> queen;
+      string s = "";
+      for(int i = 0 ; i < n; i++)s += '.';
+      nqueens_helper(s,queen,n);
+      return ans;
+    }
+
+    void nqueens_helper(string &s , vector<string> &queen, int size){
+     if(queen.size() == size){
+         ans.push_back(queen);
+         return;
+     }
+
+     for(int col = 0 ; col < size; col++ ){
+         if( issafe(queen , col , size)){
+             s[col] = 'Q';
+             queen.push_back(s);
+             s[col] = '.';
+             nqueens_helper(s, queen, size);
+             queen.pop_back();
+         }
+     }
+    }
+    bool issafe(vector<string> &queen , int col, int size){
+        if( queen.empty())return true;
+        
+        for(int row = 0; row < queen.size() ; row++){
+            if(queen[row][col] == 'Q')return false;
+        }
+        
+        int temprow = queen.size()-1;
+        int tempcol = col -1;
+        
+        while(temprow >= 0 && tempcol >= 0){
+            if(queen[temprow][tempcol] == 'Q'){
+                return false;
+            }
+            temprow--;
+            tempcol--;
+        }
+
+        temprow = queen.size()-1;
+        tempcol = col + 1;
+        while(temprow >= 0 && tempcol < size){
+            if(queen[temprow][tempcol] == 'Q'){
+                return false;
+            }
+            temprow--;
+            tempcol++;
+        }
+
+       return true;
+    }
+};
+
+TC - O(n!)
+SC - O(n!)
