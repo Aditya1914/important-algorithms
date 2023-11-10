@@ -1,0 +1,62 @@
+class Solution{
+    static ArrayList<ArrayList<Integer>> nQueen(int n) {
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        nqueenhelper(new boolean[n][n], ans, 0);
+        return ans;
+    }
+    static void nqueenhelper(boolean board[][] ,ArrayList<ArrayList<Integer>> ans ,int row){
+        if(row == board.length){
+            ans.add(queenpos(board));
+            return;
+        }
+        
+        for(int col = 0;  col < board.length; col++){
+            if(issafe(row, col , board)){
+                board[row][col] = true;
+                nqueenhelper(board, ans, row+1);
+                board[row][col] = false;
+            }
+        }
+    }
+    private static boolean issafe(int row , int col , boolean board[][]){
+        
+        
+        for(int r = row-1 ; r >= 0; r--){
+            if(board[r][col])return false;
+        }
+        
+        int r = row -1 ;
+        int c = col -1;
+        
+        while(r >= 0 && c >= 0){
+            if( board[r][c])return false;
+            r--;
+            c--;
+        }
+        r = row - 1;
+        c = col + 1;
+        
+        while( r >= 0 && c < board.length){
+            if( board[r][c])return false;
+            r--;
+            c++;
+        }
+        
+        return true;
+    }
+    
+    private static ArrayList<Integer> queenpos(boolean board[][]){
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int r = 0; r < board.length; r++){
+            for(int c = 0 ; c < board.length; c++){
+                if( board[r][c]){
+                    list.add(c+1);
+                }
+            }
+        }
+        return list;
+    }
+
+    TC - O(n!)
+    SC - O(n *n)
+}
