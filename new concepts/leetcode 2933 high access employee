@@ -1,0 +1,21 @@
+use of map with data structures 
+
+HashMap<String , List<Integer>> map = new HashMap<>();
+        for(List<String> sl : access_times)
+        { List<Integer> temp = new ArrayList();
+            temp.add(Integer.parseInt(sl.get(1));
+            if( map.containsKey(sl.get(0)))map.put(map.get(sl.get(0)).add(Integer.parseInt(sl.get(1))));
+            
+            else map.put(sl.get(0), temp);
+                        }}
+             List<String> ans = new ArrayList<>();
+                     
+         for( String key : map.keySet()){
+             List<Integer> strl = new ArrayList<>();
+             strl.addAll(map.get(key));
+             if(strl.size() < 3)continue;
+             Collections.sort(strl);
+             for(int i = strl.size()-1; i >= 1 i--){
+                if(strl.get(i) - strl.get(0))
+             }
+         }
