@@ -1,0 +1,54 @@
+//first converting to binary string then to int without using bitset ds
+
+class Solution {
+public:
+    vector<int> grayCode(int n) {
+    /*  vector <int> ans;
+      vector <string> binarystring = generategray(n);
+      
+      for(auto x : binarystring){
+          ans.push_back(stoi(x, nullptr, 2));
+      }
+      return ans;
+
+    }
+     vector <string> generategray(int n){
+         if( n == 1){
+             return {"0","1"};
+         }
+         vector<string> res ;
+         vector<string> temp = generategray(n-1);
+
+         for(int i = 0; i < temp.size(); i++)res.push_back("0" + temp[i]);
+
+         for(int i = temp.size()-1; i >= 0; i--)res.push_back("1" + temp[i]);
+
+         return res;
+}
+};
+       */
+
+    //    traditional include or not include with the help of bitset
+
+class Solution {
+public:
+    vector<int> grayCode(int n) {
+
+     vector<int> ans;
+     bitset<32> bitds;
+     generategraybits(ans, bitds, n);
+     return ans;  
+     
+     }
+     void generategraybits(vector<int> &ans, bitset<32> &bitds, int n){
+         if( n == 0){
+             ans.push_back(bitds.to_ulong());
+             return;
+         }
+
+        generategraybits(ans,bitds, n-1);
+        bitds.flip(n-1);
+        generategraybits(ans,bitds,n-1);
+     } 
+};
+
